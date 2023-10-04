@@ -27,7 +27,7 @@ class Tamagushi:
         self.fome = f
 
     def alimentar(self, f):
-        if self.fome >= 0: 
+        if self.fome >= 0:
             self.fome -= f
 
     def setSaude(self, s):
@@ -60,5 +60,8 @@ while True:
         tamagushi.alimentar(r)
     elif r == 3:
         tamagushi.cuidar(50)
+
+    elif r == 0:
+        print(f"Voce tem um Tamagushi!!\nO nome dele é {tamagushi.getNome()}, ele tem {tamagushi.getIdade()} anos e esta com {tamagushi.getFome()} de fome, {tamagushi.getSaude()} de saude e {tamagushi.getHumor()} de humor")
     else:
         print("Nao entendi :/")
