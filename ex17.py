@@ -1,9 +1,10 @@
 class Tamagushi:
-    def __init__(self, nome, fome, saude, idade):
+    def __init__(self, nome, fome, saude, idade, lista):
         self.nome = nome
         self.fome = fome
         self.saude = saude
         self.idade = idade
+        lista.append(self)
 
     def getNome(self):
         return self.nome
@@ -40,9 +41,30 @@ class Tamagushi:
     def setIdade(self, i):
         self.idade = i
 r = 0
-tamagushi = Tamagushi("Fofinho", 40, 30, 3)
+t = -1
+lista = []
+nomes = ""
+t1 = Tamagushi("Fofinho", 40, 30, 3, lista)
+t2 = Tamagushi("Coisinha", 10, 50, 2, lista)
+
+for t in lista:
+    nomes += t.getNome()+", "
+
 while True:
-    print(f'Voce tem um Tamagushi, o nome dele eh {tamagushi.getNome()}')
+    print(f'Voce tem {len(lista)} Tamagushis, os nomes deles sao {nomes}')
+    r = int(input("Com qual deles voce deseja interagir(escolha o numero dele[0 para sair])? "))
+    if r == 0:
+        break
+    while 1:
+        try:
+            t = lista[r-1]
+            break
+        except:
+            print("Nao conheco esse tamagushi :(")
+            print(f'Voce tem {len(lista)} Tamagushis, os nomes deles sao {nomes}')
+            r = int(input("Com qual deles voce deseja interagir(escolha o numero dele)? "))
+    print(f"Voce escolheu o {t.getNome()}!")
+    
     print('Voce pode brincar com ele(1), alimenta-lo(2), cuidar dele(3) ou sair(4)')
     r = int(input("O que deseja fazer? "))
     if r == 4:
@@ -51,17 +73,17 @@ while True:
         r = int(input("Por quanto tempo deseja brincar com ele[min]? "))
         if r > 60:
             r = 60
-        tamagushi.cuidar(r/2)
-        tamagushi.alimentar(r/2)
+        t.cuidar(r/2)
+        t.alimentar(r/2)
     elif r == 2:
         r = int(input("Quanto de comida deseja dar a ele? "))
         if r > 60:
             r = 60
-        tamagushi.alimentar(r)
+        t.alimentar(r)
     elif r == 3:
-        tamagushi.cuidar(50)
+        t.cuidar(50)
 
     elif r == 0:
-        print(f"Voce tem um Tamagushi!!\nO nome dele é {tamagushi.getNome()}, ele tem {tamagushi.getIdade()} anos e esta com {tamagushi.getFome()} de fome, {tamagushi.getSaude()} de saude e {tamagushi.getHumor()} de humor")
+        print(f"O nome dele é {t.getNome()}, ele tem {t.getIdade()} anos e esta com {t.getFome()} de fome, {t.getSaude()} de saude e {t.getHumor()} de humor")
     else:
         print("Nao entendi :/")
