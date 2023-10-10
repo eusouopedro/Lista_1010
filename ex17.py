@@ -85,5 +85,6 @@ while True:
 
     elif r == 0:
         print(f"O nome dele é {t.getNome()}, ele tem {t.getIdade()} anos e esta com {t.getFome()} de fome, {t.getSaude()} de saude e {t.getHumor()} de humor")
+    
     else:
         print("Nao entendi :/")
